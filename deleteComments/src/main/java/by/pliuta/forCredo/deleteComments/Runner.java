@@ -11,23 +11,22 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * Программа удаляющая комментарии из текстого файла
- * Пути к файлам прописываются в файле filena.properties
- * в папке resources
+ * Программа удаляющая комментарии из текстого файла Пути к файлам прописываются
+ * в файле filena.properties в папке resources
  */
 public class Runner {
 	public static void main(String[] args) throws IOException {
 		// название нужного файла храним в файле ресурсов
 
 		ResourceBundle resource = ResourceBundle.getBundle("filename");
-		//получение пути к входному файлу
+		// получение пути к входному файлу
 		String fileIn = resource.getString("fileIn");
-		//пути к выходным файлам
+		// пути к выходным файлам
 		String fileOutJava = resource.getString("fileOutJava");
 		String fileOut = resource.getString("fileOut");
 
 		// РЕШЕНИЕ ДЛЯ JAVA
-		
+
 		List<String> lines = Files.readAllLines(Paths.get(fileIn), StandardCharsets.UTF_8);
 
 		try (FileWriter writer = new FileWriter(fileOutJava, false)) {
@@ -39,7 +38,7 @@ public class Runner {
 			}
 			// убираем все многострочные
 			String finishLine = commonLine.replaceAll("/\\*([^\\*/]*\\s*[^\\*/]*)+\\*/", "");
-			//пишем итог
+			// пишем итог
 			writer.append(finishLine);
 			writer.flush();
 		} catch (IOException ex) {
