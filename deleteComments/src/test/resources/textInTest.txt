@@ -1,0 +1,34 @@
+﻿/**
+  * @since       JDK1.1
+ */
+
+public class FileWriter extends OutputStreamWriter {
+
+    public FileWriter(String fileName, boolean append) throws IOException {
+        super(new FileOutputStream(fileName, append));// Constructs a FileWriter
+    }
+
+    /**
+     * Constructs a FileWriter object given a File object.
+     *
+     * @param file  a File object to write to.
+     * @throws IOException  if the file exists but is a directory rather than
+     *                  a regular file, does not exist but cannot be created,
+     *                  or cannot be opened for any other reason
+     */
+    public FileWriter(File file) throws IOException {
+        super(new FileOutputStream(file));
+    }
+
+ 
+
+   
+     // Constructs a FileWriter object associated with a file descriptor.
+    
+     // @param fd  FileDescriptor object to write to.
+     
+    public FileWriter(FileDescriptor fd) {
+        super(new FileOutputStream(fd));
+    }
+
+}

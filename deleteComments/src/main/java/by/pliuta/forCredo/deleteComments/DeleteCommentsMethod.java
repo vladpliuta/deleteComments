@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class DeleteCommentsMethod {
 	
-	
+	//ВАЖНО - метод не доработан !!!!
 	public static void delCommentsWithPatterns(List<String> lines, FileWriter writer) throws IOException{
 		String commonLine = "";
 		for (int i = 0; i < lines.size(); i++) {
@@ -18,7 +18,9 @@ public class DeleteCommentsMethod {
 			commonLine = commonLine.concat(editLine).concat("\r\n");
 		}
 		// убираем все многострочные
-		String finishLine = commonLine.replaceAll("/\\*([^\\*/]*\\s*[^\\*/]*)+\\*/", "");
+		//
+		//ВАЖНО - паттерн не доработан !!!!
+		String finishLine = commonLine.replaceAll("/\\*([^\\*/]*\\n*)+\\*/", "");
 		writer.append(finishLine);
 		writer.flush();
 		}
